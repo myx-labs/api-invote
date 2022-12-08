@@ -46,8 +46,8 @@ export async function getBallotValueCounts() {
 }
 
 export async function addReplica(
-  id: string,
-  value: string,
+  id: string | undefined,
+  value: string | undefined,
   timestamp_box: number,
   timestamp_ballot: number
 ) {

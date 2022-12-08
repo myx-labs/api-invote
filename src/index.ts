@@ -29,21 +29,27 @@ await server.register(fastifyCors, {
   origin: [/localhost/, /yan3321\.com$/, /yan\.gg$/, /127.0.0.1/],
 });
 
+function treatAsUndiRosak(string: string | null | undefined) {
+  if (string === null || typeof string === "undefined") {
+    return true;
+  } else if (string === "" || string !== "ROSAK") {
+    return true;
+  }
+  return false;
+}
+
 server.get("/stats", async () => {
   const replica = await getBallotValueCounts();
   return {
     hidden: config.hidden,
-    data: config.hidden
-      ? replica.map((item, index) => ({
-          ...item,
-          name:
-            item.name !== "ROSAK" ||
-            item.name === null ||
-            typeof item.name === "undefined"
-              ? index.toString()
-              : "ROSAK",
-        }))
-      : replica,
+    data: replica.map((item, index) => ({
+      ...item,
+      name: !treatAsUndiRosak(item.name)
+        ? config.hidden
+          ? index.toString()
+          : item.name
+        : "ROSAK",
+    })),
   };
 });
 
@@ -53,8 +59,8 @@ server.post(
     schema: {
       body: Type.Strict(
         Type.Object({
-          id: Type.String(),
-          value: Type.String(),
+          id: Type.Optional(Type.String()),
+          value: Type.Optional(Type.String()),
           timestamp_box: Type.Number(),
           timestamp_ballot: Type.Number(),
         })
