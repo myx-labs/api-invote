@@ -32,7 +32,7 @@ await server.register(fastifyCors, {
 function treatAsUndiRosak(string: string | null | undefined) {
   if (string === null || typeof string === "undefined") {
     return true;
-  } else if (string === "" || string !== "ROSAK") {
+  } else if (string === "" || string === "ROSAK") {
     return true;
   }
   return false;
@@ -40,16 +40,23 @@ function treatAsUndiRosak(string: string | null | undefined) {
 
 server.get("/stats", async () => {
   const replica = await getBallotValueCounts();
+  const validBallots = replica
+    .filter((item) => !treatAsUndiRosak(item.name))
+    .map((item, index) => ({
+      ...item,
+      name: config.hidden ? (index + 1).toString() : item.name,
+    }));
+  const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
+
+  let invalidCount = 0;
+
+  invalidBallots.forEach((item) => {
+    invalidCount += item.votes;
+  });
+
   return {
     hidden: config.hidden,
-    data: replica.map((item, index) => ({
-      ...item,
-      name: !treatAsUndiRosak(item.name)
-        ? config.hidden
-          ? index.toString()
-          : item.name
-        : "ROSAK",
-    })),
+    data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
   };
 });
 
