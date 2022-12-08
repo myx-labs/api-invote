@@ -3,7 +3,7 @@ config_env();
 
 export default {
   testMode: false,
-  hidden: process.env.REVEAL_PARTIES === "true" ? true : false,
+  hidden: process.env.REVEAL_PARTIES === "true" ? false : true,
   seriesIdentifier: process.env.SERIES_IDENTIFIER,
   port:
     typeof process.env.API_PORT !== "undefined"
