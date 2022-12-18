@@ -13,6 +13,8 @@ import {
   addReplica,
   getBallotValueCounts,
   getReplica,
+  getTimestamps,
+  InvoteBallotCountData,
   startDB,
 } from "./postgres.js";
 import { Type } from "@sinclair/typebox";
@@ -40,6 +42,10 @@ function treatAsUndiRosak(string: string | null | undefined) {
 
 server.get("/stats", async () => {
   const replica = await getBallotValueCounts();
+  return processResults(replica);
+});
+
+async function processResults(replica: InvoteBallotCountData[]) {
   const validBallots = replica
     .filter((item) => !treatAsUndiRosak(item.name))
     .map((item, index) => ({
@@ -58,6 +64,22 @@ server.get("/stats", async () => {
     hidden: config.hidden,
     data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
   };
+}
+
+server.get("/stats/timestamp", async () => {
+  const timestamps = await getTimestamps();
+  const results = [];
+  for (const timestamp of timestamps) {
+    const value = timestamp.timestamp_box;
+    if (value) {
+      console.log(value);
+      results.push({
+        timestamp: value,
+        results: await processResults(await getBallotValueCounts(value)),
+      });
+    }
+  }
+  return results;
 });
 
 server.post(

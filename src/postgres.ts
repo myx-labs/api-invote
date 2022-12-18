@@ -23,9 +23,13 @@ const table = "invote_ballots";
 interface InvoteBallotData {
   id?: string | null;
   value?: string | null;
-  timestamp_box?: number | null;
-  timestamp_ballot?: number | null;
+  timestamp_box?: Date | null;
+  timestamp_ballot?: Date | null;
   series_identifier?: string | null;
+}
+
+interface InvoteBoxTimestamp {
+  timestamp_box?: Date | null;
 }
 
 export async function getReplica() {
@@ -33,14 +37,26 @@ export async function getReplica() {
   return response.rows;
 }
 
-interface InvoteBallotCountData {
+export interface InvoteBallotCountData {
   name?: string | null;
   votes: number;
 }
 
-export async function getBallotValueCounts() {
+export async function getBallotValueCounts(timestamp_box?: Date) {
+  let query = `SELECT value AS name, COUNT(*) AS votes FROM ${table} GROUP BY name ORDER BY votes DESC;`;
+  if (timestamp_box) {
+    query = `SELECT value AS name, COUNT(*) AS votes FROM ${table} WHERE timestamp_box = $1 GROUP BY name ORDER BY votes DESC;`;
+  }
   const response = await pool.query<InvoteBallotCountData>(
-    `SELECT value AS name, COUNT(*) AS votes FROM ${table} GROUP BY name ORDER BY votes DESC;`
+    query,
+    timestamp_box ? [timestamp_box] : []
+  );
+  return response.rows;
+}
+
+export async function getTimestamps() {
+  const response = await pool.query<InvoteBoxTimestamp>(
+    `SELECT DISTINCT timestamp_box FROM ${table};`
   );
   return response.rows;
 }
