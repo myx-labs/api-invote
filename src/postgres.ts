@@ -56,7 +56,7 @@ export async function getBallotValueCounts(timestamp_box?: Date) {
 
 export async function getTimestamps() {
   const response = await pool.query<InvoteBoxTimestamp>(
-    `SELECT DISTINCT timestamp_box FROM ${table};`
+    `SELECT DISTINCT timestamp_box FROM ${table} ORDER BY timestamp_box DESC;`
   );
   return response.rows;
 }

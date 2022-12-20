@@ -72,7 +72,6 @@ server.get("/stats/timestamp", async () => {
   for (const timestamp of timestamps) {
     const value = timestamp.timestamp_box;
     if (value) {
-      console.log(value);
       results.push({
         timestamp: value,
         results: await processResults(await getBallotValueCounts(value)),
