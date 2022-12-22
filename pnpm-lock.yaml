@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fastify/cors': ^8.2.0
   '@fastify/type-provider-typebox': ^2.4.0
-  '@sinclair/typebox': ^0.25.15
+  '@sinclair/typebox': ^0.25.16
   '@types/dotenv-safe': ^8.1.2
   '@types/node': ^16.18.10
   '@types/pg': ^8.6.5
@@ -16,8 +16,8 @@ specifiers:
 
 dependencies:
   '@fastify/cors': 8.2.0
-  '@fastify/type-provider-typebox': 2.4.0_cevri33d5r7dbytehllu7ulop4
-  '@sinclair/typebox': 0.25.15
+  '@fastify/type-provider-typebox': 2.4.0_6bmuhyog6tsemt4ntrctkk3afu
+  '@sinclair/typebox': 0.25.16
   dotenv-safe: 8.2.0
   fastify: 4.10.2
   got: 12.5.3
@@ -61,18 +61,18 @@ packages:
       fast-json-stringify: 5.5.0
     dev: false
 
-  /@fastify/type-provider-typebox/2.4.0_cevri33d5r7dbytehllu7ulop4:
+  /@fastify/type-provider-typebox/2.4.0_6bmuhyog6tsemt4ntrctkk3afu:
     resolution: {integrity: sha512-dP8KnpfyBD1FT1UxNWCRqSpKG69xYAK53q6MqUjuwYL7xvogXBbH/tpAMc1kZkKmgAHPT0migy9DaYtnkTbIIQ==}
     peerDependencies:
       '@sinclair/typebox': ^0.25.9
       fastify: ^4.0.0
     dependencies:
-      '@sinclair/typebox': 0.25.15
+      '@sinclair/typebox': 0.25.16
       fastify: 4.10.2
     dev: false
 
-  /@sinclair/typebox/0.25.15:
-    resolution: {integrity: sha512-J0C9JoAFbuRx37ofnpv6ZDgPMFogUBgtVPiHyq69ictcS1E3onLWBrzxTJuByV5ngUyLEXymtYMf3TppNbJWLw==}
+  /@sinclair/typebox/0.25.16:
+    resolution: {integrity: sha512-5sclbtYBKQ0W5hY8ovF/cBbQV+FWBZArd738hQpLgWUdlWyuOA0HOuYN178jUJRz0pXuL1+UYR+LCMvoR47osg==}
     dev: false
 
   /@sindresorhus/is/5.3.0:
