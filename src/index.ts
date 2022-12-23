@@ -11,8 +11,11 @@ import config from "./config.js";
 
 import {
   addReplica,
+  addSeat,
   getBallotValueCounts,
   getReplica,
+  getSeats,
+  getSeriesIdentifiers,
   getTimestamps,
   InvoteBallotCountData,
   startDB,
@@ -66,20 +69,46 @@ async function processResults(replica: InvoteBallotCountData[]) {
   };
 }
 
-server.get("/stats/timestamp", async () => {
-  const timestamps = await getTimestamps();
-  const results = [];
-  for (const timestamp of timestamps) {
-    const value = timestamp.timestamp_box;
-    if (value) {
-      results.push({
-        timestamp: value,
-        results: await processResults(await getBallotValueCounts(value)),
-      });
-    }
-  }
-  return results;
+server.get("/stats/series-identifiers", async () => {
+  const seriesIdentifiers = await getSeriesIdentifiers();
+  return seriesIdentifiers.map((item) => item.series_identifier);
 });
+
+server.get(
+  "/stats/timestamp",
+  {
+    schema: {
+      querystring: Type.Object({
+        series_identifier: Type.Optional(Type.String()),
+      }),
+    },
+  },
+  async (req, res) => {
+    const seriesIdentifier = req.query.series_identifier;
+    const timestamps = await getTimestamps(seriesIdentifier);
+    const results = [];
+    for (const timestamp of timestamps) {
+      const value = timestamp.timestamp_box;
+      if (value) {
+        results.push({
+          timestamp: value,
+          results: await processResults(await getBallotValueCounts(value)),
+        });
+      }
+    }
+    return results;
+  }
+);
+
+server.get(
+  "/stats/seats/:series_identifier",
+  { schema: { params: Type.Object({ series_identifier: Type.String() }) } },
+  async (req, res) => {
+    const seriesIdentifier = req.params.series_identifier;
+    const seats = await getSeats(seriesIdentifier);
+    return seats;
+  }
+);
 
 server.post(
   "/add-ballot",
@@ -107,6 +136,39 @@ server.post(
           req.body.timestamp_ballot
         );
         return getReplica();
+      } else {
+        res.status(401);
+        return { error: "Not authorised!" };
+      }
+    } catch (error) {
+      res.status(500);
+      return {
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      } as any;
+    }
+  }
+);
+
+server.post(
+  "/add-seat",
+  {
+    schema: {
+      body: Type.Strict(
+        Type.Object({
+          index: Type.Number(),
+          value: Type.Optional(Type.String()),
+        })
+      ),
+    },
+  },
+  async (req, res) => {
+    try {
+      const authed =
+        req.headers.authorization === `Api-Key ${config.credentials.api}`;
+      if (authed) {
+        await addSeat(req.body.index, req.body.value);
+        return { success: true };
       } else {
         res.status(401);
         return { error: "Not authorised!" };

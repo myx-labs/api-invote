@@ -18,7 +18,8 @@ export async function startDB() {
   }
 }
 
-const table = "invote_ballots";
+const table_ballots = "invote_ballots";
+const table_seats = "invote_seats";
 
 interface InvoteBallotData {
   id?: string | null;
@@ -33,7 +34,9 @@ interface InvoteBoxTimestamp {
 }
 
 export async function getReplica() {
-  const response = await pool.query<InvoteBallotData>(`SELECT * FROM ${table}`);
+  const response = await pool.query<InvoteBallotData>(
+    `SELECT * FROM ${table_ballots}`
+  );
   return response.rows;
 }
 
@@ -42,10 +45,21 @@ export interface InvoteBallotCountData {
   votes: number;
 }
 
+interface InvoteSeriesIdentifier {
+  series_identifier: string | null;
+}
+
+export async function getSeriesIdentifiers() {
+  const response = await pool.query<InvoteSeriesIdentifier>(
+    `SELECT DISTINCT series_identifier FROM ${table_ballots} ORDER BY series_identifier DESC`
+  );
+  return response.rows;
+}
+
 export async function getBallotValueCounts(timestamp_box?: Date) {
-  let query = `SELECT value AS name, COUNT(*) AS votes FROM ${table} GROUP BY name ORDER BY votes DESC;`;
+  let query = `SELECT value AS name, COUNT(*) AS votes FROM ${table_ballots} GROUP BY name ORDER BY votes DESC;`;
   if (timestamp_box) {
-    query = `SELECT value AS name, COUNT(*) AS votes FROM ${table} WHERE timestamp_box = $1 GROUP BY name ORDER BY votes DESC;`;
+    query = `SELECT value AS name, COUNT(*) AS votes FROM ${table_ballots} WHERE timestamp_box = $1 GROUP BY name ORDER BY votes DESC;`;
   }
   const response = await pool.query<InvoteBallotCountData>(
     query,
@@ -54,11 +68,43 @@ export async function getBallotValueCounts(timestamp_box?: Date) {
   return response.rows;
 }
 
-export async function getTimestamps() {
+export async function getTimestamps(seriesIdentifier?: string) {
+  let query = `SELECT DISTINCT timestamp_box FROM ${table_ballots} ORDER BY timestamp_box DESC;`;
+  if (seriesIdentifier) {
+    query = `SELECT DISTINCT timestamp_box FROM ${table_ballots} WHERE series_identifier = $1 ORDER BY timestamp_box DESC;`;
+  }
   const response = await pool.query<InvoteBoxTimestamp>(
-    `SELECT DISTINCT timestamp_box FROM ${table} ORDER BY timestamp_box DESC;`
+    query,
+    seriesIdentifier ? [seriesIdentifier] : []
   );
   return response.rows;
+}
+
+interface InvoteSeats {
+  index: number;
+  party: string | null;
+}
+
+export async function getSeats(seriesIdentifier: string) {
+  const response = await pool.query<InvoteSeats>(
+    `SELECT DISTINCT index, party FROM ${table_seats} WHERE series_identifier = $1 ORDER BY index ASC;`,
+    [seriesIdentifier]
+  );
+  return response.rows;
+}
+
+export async function addSeat(index: number, party?: string | null) {
+  await pool.query(
+    `
+    INSERT INTO
+        ${table_seats} (index, party, series_identifier)
+    VALUES($1, $2, $3) ON CONFLICT (index, series_identifier) DO
+    UPDATE
+    SET
+        party = EXCLUDED.party;
+    `,
+    [index, party, config.seriesIdentifier]
+  );
 }
 
 export async function addReplica(
@@ -68,7 +114,7 @@ export async function addReplica(
   timestamp_ballot: number
 ) {
   await pool.query(
-    `INSERT INTO ${table} (id, value, timestamp_box, timestamp_ballot, series_identifier) VALUES ($1, $2, $3, $4, $5)`,
+    `INSERT INTO ${table_ballots} (id, value, timestamp_box, timestamp_ballot, series_identifier) VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
       value,
