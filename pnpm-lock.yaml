@@ -5,7 +5,7 @@ specifiers:
   '@fastify/type-provider-typebox': ^2.4.0
   '@sinclair/typebox': ^0.25.16
   '@types/dotenv-safe': ^8.1.2
-  '@types/node': ^16.18.10
+  '@types/node': ^16.18.11
   '@types/pg': ^8.6.6
   dotenv-safe: ^8.2.0
   fastify: ^4.10.2
@@ -25,7 +25,7 @@ dependencies:
 
 devDependencies:
   '@types/dotenv-safe': 8.1.2
-  '@types/node': 16.18.10
+  '@types/node': 16.18.11
   '@types/pg': 8.6.6
   nodemon: 2.0.20
   typescript: 4.9.4
@@ -93,14 +93,14 @@ packages:
       dotenv: 8.6.0
     dev: true
 
-  /@types/node/16.18.10:
-    resolution: {integrity: sha512-XU1+v7h81p7145ddPfjv7jtWvkSilpcnON3mQ+bDi9Yuf7OI56efOglXRyXWgQ57xH3fEQgh7WOJMncRHVew5w==}
+  /@types/node/16.18.11:
+    resolution: {integrity: sha512-3oJbGBUWuS6ahSnEq1eN2XrCyf4YsWI8OyCvo7c64zQJNplk3mO84t53o8lfTk+2ji59g5ycfc6qQ3fdHliHuA==}
     dev: true
 
   /@types/pg/8.6.6:
     resolution: {integrity: sha512-O2xNmXebtwVekJDD+02udOncjVcMZQuTEQEMpKJ0ZRf5E7/9JJX3izhKUcUifBkyKpljyUM6BTgy2trmviKlpw==}
     dependencies:
-      '@types/node': 16.18.10
+      '@types/node': 16.18.11
       pg-protocol: 1.5.0
       pg-types: 2.2.0
     dev: true
@@ -670,8 +670,8 @@ packages:
       split2: 4.1.0
     dev: false
 
-  /pino-std-serializers/6.0.0:
-    resolution: {integrity: sha512-mMMOwSKrmyl+Y12Ri2xhH1lbzQxwwpuru9VjyJpgFIH4asSj88F2csdMwN6+M5g1Ll4rmsYghHLQJw81tgZ7LQ==}
+  /pino-std-serializers/6.1.0:
+    resolution: {integrity: sha512-KO0m2f1HkrPe9S0ldjx7za9BJjeHqBku5Ch8JyxETxT8dEFGz1PwgrHaOQupVYitpzbFSYm7nnljxD8dik2c+g==}
     dev: false
 
   /pino/8.8.0:
@@ -682,11 +682,11 @@ packages:
       fast-redact: 3.1.2
       on-exit-leak-free: 2.1.0
       pino-abstract-transport: 1.0.0
-      pino-std-serializers: 6.0.0
+      pino-std-serializers: 6.1.0
       process-warning: 2.1.0
       quick-format-unescaped: 4.0.4
       real-require: 0.2.0
-      safe-stable-stringify: 2.4.1
+      safe-stable-stringify: 2.4.2
       sonic-boom: 3.2.1
       thread-stream: 2.2.0
     dev: false
@@ -802,8 +802,8 @@ packages:
       ret: 0.2.2
     dev: false
 
-  /safe-stable-stringify/2.4.1:
-    resolution: {integrity: sha512-dVHE6bMtS/bnL2mwualjc6IxEv1F+OCUpA46pKUj6F8uDbUM0jCCulPqRNPSnWwGNKx5etqMjZYdXtrm5KJZGA==}
+  /safe-stable-stringify/2.4.2:
+    resolution: {integrity: sha512-gMxvPJYhP0O9n2pvcfYfIuYgbledAOJFcqRThtPRmjscaipiwcwPPKLytpVzMkG2HAN87Qmo2d4PtGiri1dSLA==}
     engines: {node: '>=10'}
     dev: false
 
