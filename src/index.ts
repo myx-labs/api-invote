@@ -48,13 +48,17 @@ server.get("/stats", async () => {
   return processResults(replica);
 });
 
-async function processResults(replica: InvoteBallotCountData[]) {
+async function processResults(
+  replica: InvoteBallotCountData[],
+  hidden: boolean = false
+) {
   const validBallots = replica
     .filter((item) => !treatAsUndiRosak(item.name))
     .map((item, index) => ({
       ...item,
-      name: config.hidden ? (index + 1).toString() : item.name,
+      name: hidden ? (index + 1).toString() : item.name,
     }));
+
   const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
 
   let invalidCount = 0;
@@ -64,7 +68,7 @@ async function processResults(replica: InvoteBallotCountData[]) {
   });
 
   return {
-    hidden: config.hidden,
+    hidden: hidden,
     data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
   };
 }
@@ -85,6 +89,8 @@ server.get(
   },
   async (req, res) => {
     const seriesIdentifier = req.query.series_identifier;
+    const hidden =
+      config.hidden && seriesIdentifier === config.seriesIdentifier;
     const timestamps = await getTimestamps(seriesIdentifier);
     const results = [];
     for (const timestamp of timestamps) {
@@ -92,7 +98,10 @@ server.get(
       if (value) {
         results.push({
           timestamp: value,
-          results: await processResults(await getBallotValueCounts(value)),
+          results: await processResults(
+            await getBallotValueCounts(value),
+            hidden
+          ),
         });
       }
     }
