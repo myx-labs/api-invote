@@ -70,7 +70,7 @@ async function processResults(
     .filter((item) => !treatAsUndiRosak(item.name))
     .map((item, index) => ({
       ...item,
-      name: hidden ? getOrdinal(index + 1) : item.name,
+      name: hidden ? `${index + 1}${getOrdinal(index + 1)}` : item.name,
     }));
 
   const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
