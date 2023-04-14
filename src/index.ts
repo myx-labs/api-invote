@@ -48,6 +48,20 @@ server.get("/stats", async () => {
   return processResults(replica);
 });
 
+function getOrdinal(n: number) {
+  let ord = "th";
+
+  if (n % 10 == 1 && n % 100 != 11) {
+    ord = "st";
+  } else if (n % 10 == 2 && n % 100 != 12) {
+    ord = "nd";
+  } else if (n % 10 == 3 && n % 100 != 13) {
+    ord = "rd";
+  }
+
+  return ord;
+}
+
 async function processResults(
   replica: InvoteBallotCountData[],
   hidden: boolean = false
@@ -56,7 +70,7 @@ async function processResults(
     .filter((item) => !treatAsUndiRosak(item.name))
     .map((item, index) => ({
       ...item,
-      name: hidden ? (index + 1).toString() : item.name,
+      name: hidden ? getOrdinal(index + 1) : item.name,
     }));
 
   const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
