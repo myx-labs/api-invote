@@ -4,7 +4,7 @@ config_env();
 
 import fastify from "fastify";
 import fastifyCors from "@fastify/cors";
-import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+import { Type, TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 
 // Classes
 import config from "./config.js";
@@ -20,7 +20,6 @@ import {
   InvoteBallotCountData,
   startDB,
 } from "./postgres.js";
-import { Type } from "@sinclair/typebox";
 
 // Variables
 
