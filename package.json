@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.16.7",
+    "@types/node": "^18.16.12",
     "@types/pg": "^8.6.6",
     "nodemon": "^2.0.22",
     "typescript": "^5.0.4"
@@ -23,7 +23,7 @@
     "dotenv-safe": "^8.2.0",
     "fastify": "^4.17.0",
     "got": "^12.6.0",
-    "pg": "^8.10.0"
+    "pg": "^8.11.0"
   },
   "overrides": {
     "@types/responselike": "1.0.0"
