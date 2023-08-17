@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.17.1",
+    "@types/node": "^18.17.5",
     "@types/pg": "^8.10.2",
     "nodemon": "^3.0.1",
     "tsx": "^3.12.7",
@@ -20,11 +20,11 @@
   },
   "dependencies": {
     "@fastify/cors": "^8.3.0",
-    "@fastify/type-provider-typebox": "^3.3.0",
+    "@fastify/type-provider-typebox": "^3.5.0",
     "dotenv-safe": "^8.2.0",
     "fastify": "^4.21.0",
     "got": "^13.0.0",
-    "pg": "^8.11.2"
+    "pg": "^8.11.3"
   },
   "overrides": {
     "@types/responselike": "1.0.0"
