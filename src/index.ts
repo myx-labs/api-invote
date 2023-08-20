@@ -29,7 +29,7 @@ const server = fastify({
 
 const port: number = config.port;
 const hour = 1000 * 60 * 60;
-const hoursBeforeReveal = 24 * hour;
+const hoursBeforeReveal = 2 * hour;
 
 await server.register(fastifyCors, {
   origin: [/localhost/, /yan3321\.com$/, /yan\.gg$/, /127.0.0.1/],
