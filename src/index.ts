@@ -28,6 +28,8 @@ const server = fastify({
 }).withTypeProvider<TypeBoxTypeProvider>();
 
 const port: number = config.port;
+const hour = 1000 * 60 * 60;
+const hoursBeforeReveal = 24 * hour;
 
 await server.register(fastifyCors, {
   origin: [/localhost/, /yan3321\.com$/, /yan\.gg$/, /127.0.0.1/],
@@ -75,6 +77,8 @@ async function processResults(
   const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
 
   let invalidCount = 0;
+  const hour = 1000 * 60 * 60;
+  const hoursBeforeReveal = 2 * hour;
 
   invalidBallots.forEach((item) => {
     invalidCount += item.votes;
@@ -109,6 +113,11 @@ server.get(
     for (const timestamp of timestamps) {
       const value = timestamp.timestamp_box;
       if (value) {
+        if (hidden) {
+          if (Date.now() < value.getTime() + hoursBeforeReveal) {
+            break;
+          }
+        }
         results.push({
           timestamp: value,
           results: await processResults(
