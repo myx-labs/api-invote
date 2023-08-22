@@ -93,6 +93,51 @@ export async function getSeats(seriesIdentifier: string) {
   return response.rows;
 }
 
+interface PartyVoteData {
+  party: string | null;
+  votes: number;
+}
+
+export async function getAllVotesByParty() {
+  const response = await pool.query<PartyVoteData>(
+    `SELECT value AS party,
+        COUNT(*) AS votes
+    FROM
+        invote_ballots
+    GROUP BY
+        party
+    ORDER BY
+        votes DESC;
+    `
+  );
+  return response.rows;
+}
+
+interface SeriesVoteData {
+  series_identifier: string;
+  total: number;
+  invalid: number;
+}
+
+export async function getAllVotesBySeries() {
+  const response = await pool.query<SeriesVoteData>(
+    `SELECT series_identifier,
+        COUNT(*) AS total,
+        COUNT(
+            CASE
+                WHEN value IS NULL THEN 1
+                ELSE NULL
+            END
+        ) AS invalid
+    FROM
+        invote_ballots
+    GROUP BY
+        series_identifier;
+    `
+  );
+  return response.rows;
+}
+
 export async function addSeat(index: number, party?: string | null) {
   await pool.query(
     `

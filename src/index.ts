@@ -12,6 +12,8 @@ import config from "./config.js";
 import {
   addReplica,
   addSeat,
+  getAllVotesByParty,
+  getAllVotesBySeries,
   getBallotValueCounts,
   getReplica,
   getSeats,
@@ -94,6 +96,10 @@ server.get("/stats/series-identifiers", async () => {
   const seriesIdentifiers = await getSeriesIdentifiers();
   return seriesIdentifiers.map((item) => item.series_identifier);
 });
+
+server.get("/stats/votes/party", getAllVotesByParty);
+
+server.get("/stats/votes/series", getAllVotesBySeries);
 
 server.get(
   "/stats/timestamp",
