@@ -12,17 +12,17 @@
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.17.12",
+    "@types/node": "^18.17.14",
     "@types/pg": "^8.10.2",
     "nodemon": "^3.0.1",
-    "tsx": "^3.12.7",
+    "tsx": "^3.12.8",
     "typescript": "^5.2.2"
   },
   "dependencies": {
     "@fastify/cors": "^8.3.0",
     "@fastify/type-provider-typebox": "^3.5.0",
     "dotenv-safe": "^8.2.0",
-    "fastify": "^4.22.0",
+    "fastify": "^4.22.2",
     "got": "^13.0.0",
     "pg": "^8.11.3"
   },
