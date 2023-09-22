@@ -33,8 +33,16 @@ const port: number = config.port;
 const hour = 1000 * 60 * 60;
 const hoursBeforeReveal = 3 * hour;
 
+const origins = [
+  /localhost/,
+  /127.0.0.1/,
+  /yan3321\.com$/,
+  /yan\.gg$/,
+  /mysver\.se$/,
+];
+
 await server.register(fastifyCors, {
-  origin: [/localhost/, /yan3321\.com$/, /yan\.gg$/, /127.0.0.1/],
+  origin: origins,
 });
 
 function treatAsUndiRosak(string: string | null | undefined) {
