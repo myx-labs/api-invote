@@ -9,8 +9,8 @@ dependencies:
     specifier: ^8.5.0
     version: 8.5.0
   '@fastify/type-provider-typebox':
-    specifier: ^3.5.0
-    version: 3.5.0(@sinclair/typebox@0.31.28)
+    specifier: ^4.0.0
+    version: 4.0.0(@sinclair/typebox@0.31.28)
   dotenv-safe:
     specifier: ^8.2.0
     version: 8.2.0
@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^8.1.5
     version: 8.1.5
   '@types/node':
-    specifier: ^20.10.5
-    version: 20.10.5
+    specifier: ^20.10.6
+    version: 20.10.6
   '@types/pg':
     specifier: ^8.10.9
     version: 8.10.9
@@ -282,10 +282,10 @@ packages:
       fast-json-stringify: 5.9.1
     dev: false
 
-  /@fastify/type-provider-typebox@3.5.0(@sinclair/typebox@0.31.28):
-    resolution: {integrity: sha512-f48uGzvLflE/y4pvXOS8qjAC+mZmlqev9CPHnB8NDsBSL4EbeydO61IgPuzOkeNlAYeRP9Y56UOKj1XWFibgMw==}
+  /@fastify/type-provider-typebox@4.0.0(@sinclair/typebox@0.31.28):
+    resolution: {integrity: sha512-kTlN0saC/+xhcQPyBjb3YONQAMjiD/EHlCRjQjsr5E3NFjS5K8ZX5LGzXYDRjSa+sV4y8gTL5Q7FlObePv4iTA==}
     peerDependencies:
-      '@sinclair/typebox': '>=0.26 <=0.31'
+      '@sinclair/typebox': '>=0.26 <=0.32'
     dependencies:
       '@sinclair/typebox': 0.31.28
     dev: false
@@ -309,7 +309,7 @@ packages:
   /@types/dotenv-safe@8.1.5:
     resolution: {integrity: sha512-E8z+Z0+yE8eEZ8BcMnb3I31fV3ROxobooqEDRBoQDAs4lb0c9X6Va6P6z+svj/USxw4R7TErcfEuW0tk7ymaPA==}
     dependencies:
-      '@types/node': 20.10.5
+      '@types/node': 20.10.6
       dotenv: 8.6.0
     dev: true
 
@@ -317,8 +317,8 @@ packages:
     resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
     dev: false
 
-  /@types/node@20.10.5:
-    resolution: {integrity: sha512-nNPsNE65wjMxEKI93yOP+NPGGBJz/PoN3kZsVLee0XMiJolxSekEVD8wRwBUBqkwc7UWop0edW50yrCQW4CyRw==}
+  /@types/node@20.10.6:
+    resolution: {integrity: sha512-Vac8H+NlRNNlAmDfGUP7b5h/KA+AtWIzuXy0E6OyP8f1tCLYAtPvKRRDJjAPqhpCb0t6U2j7/xqAuLEebW2kiw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -326,7 +326,7 @@ packages:
   /@types/pg@8.10.9:
     resolution: {integrity: sha512-UksbANNE/f8w0wOMxVKKIrLCbEMV+oM1uKejmwXr39olg4xqcfBDbXxObJAt6XxHbDa4XTKOlUEcEltXDX+XLQ==}
     dependencies:
-      '@types/node': 20.10.5
+      '@types/node': 20.10.6
       pg-protocol: 1.6.0
       pg-types: 4.0.1
     dev: true

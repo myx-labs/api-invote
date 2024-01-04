@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.5",
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.10.6",
     "@types/pg": "^8.10.9",
     "nodemon": "^3.0.2",
     "tsx": "^4.7.0",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^8.5.0",
-    "@fastify/type-provider-typebox": "^3.5.0",
+    "@fastify/type-provider-typebox": "^4.0.0",
     "dotenv-safe": "^8.2.0",
     "fastify": "^4.25.2",
     "got": "^14.0.0",
