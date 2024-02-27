@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^20.11.20
     version: 20.11.20
   '@types/pg':
-    specifier: ^8.11.1
-    version: 8.11.1
+    specifier: ^8.11.2
+    version: 8.11.2
   nodemon:
     specifier: ^3.1.0
     version: 3.1.0
@@ -323,8 +323,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/pg@8.11.1:
-    resolution: {integrity: sha512-tUMU6HRvsosqH0qov7YH0Kj6EnziKoqmHUcREBPlDEQLWT+TxDUBT1MmQ53byHXs171xn3YFPIPwVTkVb16mVg==}
+  /@types/pg@8.11.2:
+    resolution: {integrity: sha512-G2Mjygf2jFMU/9hCaTYxJrwdObdcnuQde1gndooZSOHsNSaCehAuwc7EIuSA34Do8Jx2yZ19KtvW8P0j4EuUXw==}
     dependencies:
       '@types/node': 20.11.20
       pg-protocol: 1.6.0
