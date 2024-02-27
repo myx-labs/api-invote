@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^8.11.1
     version: 8.11.1
   nodemon:
-    specifier: ^3.0.3
-    version: 3.0.3
+    specifier: ^3.1.0
+    version: 3.1.0
   tsx:
     specifier: ^4.7.1
     version: 4.7.1
@@ -815,8 +815,8 @@ packages:
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
-  /nodemon@3.0.3:
-    resolution: {integrity: sha512-7jH/NXbFPxVaMwmBCC2B9F/V6X1VkEdNgx3iu9jji8WxWcvhMWkmhNWhI5077zknOnZnBzba9hZP6bCPJLSReQ==}
+  /nodemon@3.1.0:
+    resolution: {integrity: sha512-xqlktYlDMCepBJd43ZQhjWwMw2obW/JRvkrLxq5RCNcuDDX1DbcPT+qT1IlIIdf+DhnWs90JpTMe+Y5KxOchvA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
