@@ -139,7 +139,7 @@ export async function getAllVotesBySeries() {
 }
 
 export async function addSeat(index: number, party?: string | null) {
-  await pool.query(
+  await pool.query<any>(
     `
     INSERT INTO
         ${table_seats} (index, party, series_identifier)
@@ -158,7 +158,7 @@ export async function addReplica(
   timestamp_box: number,
   timestamp_ballot: number
 ) {
-  await pool.query(
+  await pool.query<any>(
     `INSERT INTO ${table_ballots} (id, value, timestamp_box, timestamp_ballot, series_identifier) VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
