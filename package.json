@@ -24,7 +24,7 @@
     "dotenv-safe": "^9.1.0",
     "fastify": "^4.26.2",
     "got": "^14.2.1",
-    "pg": "^8.11.4"
+    "pg": "^8.11.5"
   },
   "overrides": {
     "@types/responselike": "1.0.0"
