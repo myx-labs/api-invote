@@ -16,7 +16,7 @@
     "@types/pg": "^8.11.6",
     "nodemon": "^3.1.4",
     "tsx": "^4.16.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@fastify/cors": "^9.0.1",
