@@ -21,8 +21,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       got:
-        specifier: ^14.4.3
-        version: 14.4.3
+        specifier: ^14.4.4
+        version: 14.4.4
       pg:
         specifier: ^8.13.1
         version: 8.13.1
@@ -408,8 +408,8 @@ packages:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
 
-  got@14.4.3:
-    resolution: {integrity: sha512-iTC0Z87yxSijWTh/IpvGpwOhIQK7+GgWkYrMRoN/hB9qeRj9RPuLGODwevs0p5idUf7nrxCVa5IlOmK3b8z+KA==}
+  got@14.4.4:
+    resolution: {integrity: sha512-tqiF7eSgTBwQkxb1LxsEpva8TaMYVisbhplrFVmw9GQE3855Z+MH/mnsXLLOkDxR6hZJRFMj5VTAZ8lmTF8ZOA==}
     engines: {node: '>=20'}
 
   has-flag@3.0.0:
@@ -1073,7 +1073,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  got@14.4.3:
+  got@14.4.4:
     dependencies:
       '@sindresorhus/is': 7.0.1
       '@szmarczak/http-timer': 5.0.1
