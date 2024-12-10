@@ -4,6 +4,7 @@ const { Pool, types } = pkg;
 const pool = new Pool();
 
 import config from "./config.js";
+import { broadcastWS } from "./index.js";
 
 export async function startDB() {
   try {
@@ -93,6 +94,19 @@ export async function getSeats(seriesIdentifier: string) {
   return response.rows;
 }
 
+export async function getSeat(seriesIdentifier: string, index: number) {
+  const response = await pool.query<InvoteSeats>(
+    `SELECT DISTINCT index, party FROM ${table_seats} WHERE series_identifier = $1 AND index = $2 LIMIT 1;`,
+    [seriesIdentifier, index]
+  );
+  const result: InvoteSeats | undefined = response.rows[0];
+  if (result) {
+    return result;
+  } else {
+    return undefined;
+  }
+}
+
 interface PartyVoteData {
   party: string | null;
   votes: number;
@@ -139,6 +153,11 @@ export async function getAllVotesBySeries() {
 }
 
 export async function addSeat(index: number, party?: string | null) {
+  if (!config.seriesIdentifier) {
+    throw new Error("Series identifier not set in config!");
+  }
+  const previousSeat = await getSeat(config.seriesIdentifier, index);
+
   await pool.query<any>(
     `
     INSERT INTO
@@ -150,6 +169,13 @@ export async function addSeat(index: number, party?: string | null) {
     `,
     [index, party, config.seriesIdentifier]
   );
+  if (!previousSeat || previousSeat.party !== party) {
+    broadcastWS(config.seriesIdentifier, {
+      type: "seat",
+      index,
+      party,
+    });
+  }
 }
 
 export async function addReplica(

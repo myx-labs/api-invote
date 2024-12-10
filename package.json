@@ -14,6 +14,7 @@
     "@types/dotenv-safe": "^8.1.6",
     "@types/node": "^22.10.1",
     "@types/pg": "^8.11.10",
+    "@types/ws": "^8.5.13",
     "nodemon": "^3.1.7",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
@@ -21,12 +22,10 @@
   "dependencies": {
     "@fastify/cors": "^10.0.1",
     "@fastify/type-provider-typebox": "^5.1.0",
+    "@fastify/websocket": "^11.0.1",
     "dotenv-safe": "^9.1.0",
     "fastify": "^5.1.0",
     "got": "^14.4.5",
     "pg": "^8.13.1"
-  },
-  "overrides": {
-    "@types/responselike": "1.0.0"
   }
 }

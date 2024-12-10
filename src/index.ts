@@ -4,6 +4,7 @@ config_env();
 
 import fastify from "fastify";
 import fastifyCors from "@fastify/cors";
+import fastifyWebsocket from "@fastify/websocket";
 import { Type, TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 
 // Classes
@@ -43,6 +44,32 @@ const origins = [
 
 await server.register(fastifyCors, {
   origin: origins,
+});
+
+await server.register(fastifyWebsocket);
+
+export function broadcastWS(series: string, data: any) {
+  for (let client of server.websocketServer.clients) {
+    client.send(
+      JSON.stringify({
+        s: series,
+        t: new Date(),
+        d: data,
+      })
+    );
+  }
+}
+
+server.register(async function (server) {
+  server.get("/ws", { websocket: true }, (connection) => {
+    connection.on("open", () => {
+      console.log("Connection opened");
+    });
+    connection.on("message", (message) => {
+      console.log(message.toString());
+      connection.send(JSON.stringify({ hello: "world" }));
+    });
+  });
 });
 
 function treatAsUndiRosak(string: string | null | undefined) {
