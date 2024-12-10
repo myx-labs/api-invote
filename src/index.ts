@@ -40,6 +40,7 @@ const origins = [
   /yan3321\.com$/,
   /yan\.gg$/,
   /mysver\.se$/,
+  /mys\.gg$/,
 ];
 
 await server.register(fastifyCors, {
@@ -62,13 +63,7 @@ export function broadcastWS(series: string, data: any) {
 
 server.register(async function (server) {
   server.get("/ws", { websocket: true }, (connection) => {
-    connection.on("open", () => {
-      console.log("Connection opened");
-    });
-    connection.on("message", (message) => {
-      console.log(message.toString());
-      connection.send(JSON.stringify({ hello: "world" }));
-    });
+    connection.on("error", console.error);
   });
 });
 
