@@ -109,8 +109,6 @@ async function processResults(
   const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
 
   let invalidCount = 0;
-  const hour = 1000 * 60 * 60;
-  const hoursBeforeReveal = 2 * hour;
 
   invalidBallots.forEach((item) => {
     invalidCount += item.votes;
@@ -196,19 +194,24 @@ server.post(
       const authed =
         req.headers.authorization === `Api-Key ${config.credentials.api}`;
       if (authed) {
+        if (req.body.id === "TEST") {
+          res.status(500);
+          return { error: "Test ballot not allowed!" };
+        }
         await addReplica(
           req.body.id,
           req.body.value,
           req.body.timestamp_box,
           req.body.timestamp_ballot
         );
-        return getReplica();
+        return { success: true };
       } else {
         res.status(401);
         return { error: "Not authorised!" };
       }
     } catch (error) {
       res.status(500);
+      console.error(error);
       return {
         error:
           error instanceof Error ? error.message : "Unknown error occurred",
