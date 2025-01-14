@@ -17,7 +17,7 @@
     "@types/ws": "^8.5.13",
     "nodemon": "^3.1.9",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",
