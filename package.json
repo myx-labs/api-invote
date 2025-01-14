@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.6",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.10.6",
     "@types/pg": "^8.11.10",
     "@types/ws": "^8.5.13",
     "nodemon": "^3.1.9",
