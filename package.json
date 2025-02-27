@@ -20,7 +20,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@fastify/cors": "^10.1.0",
+    "@fastify/cors": "^11.0.0",
     "@fastify/type-provider-typebox": "^5.1.0",
     "@fastify/websocket": "^11.0.2",
     "dotenv-safe": "^9.1.0",
