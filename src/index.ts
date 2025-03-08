@@ -128,6 +128,16 @@ async function processResults(
       : item.name,
   }));
 
+  // if not hidden, sort invalid votes last
+  if (!hidden) {
+    data.sort((a, b) => {
+      if (a.name === "ROSAK" && b.name !== "ROSAK") return 1;
+      if (a.name !== "ROSAK" && b.name === "ROSAK") return -1;
+      return 0;
+    });
+    // data is now reordered as needed
+  }
+
   return {
     hidden,
     data,
