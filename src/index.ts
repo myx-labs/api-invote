@@ -99,25 +99,36 @@ async function processResults(
   replica: InvoteBallotCountData[],
   hidden: boolean = false
 ) {
-  const validBallots = replica
+  // const validBallots = replica
+  //   .filter((item) => !treatAsUndiRosak(item.name))
+  //   .map((item, index) => ({
+  //     ...item,
+  //     name: hidden ? `${index + 1}${getOrdinal(index + 1)}` : item.name,
+  //   }));
+
+  // const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
+
+  // let invalidCount = 0;
+
+  // invalidBallots.forEach((item) => {
+  //   invalidCount += item.votes;
+  // });
+
+  // return {
+  //   hidden: hidden,
+  //   data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
+  // };
+
+  return replica
     .filter((item) => !treatAsUndiRosak(item.name))
     .map((item, index) => ({
       ...item,
-      name: hidden ? `${index + 1}${getOrdinal(index + 1)}` : item.name,
+      name: hidden
+        ? `${index + 1}${getOrdinal(index + 1)}`
+        : treatAsUndiRosak(item.name)
+        ? "ROSAK"
+        : item.name,
     }));
-
-  const invalidBallots = replica.filter((item) => treatAsUndiRosak(item.name));
-
-  let invalidCount = 0;
-
-  invalidBallots.forEach((item) => {
-    invalidCount += item.votes;
-  });
-
-  return {
-    hidden: hidden,
-    data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
-  };
 }
 
 server.get("/stats/series-identifiers", async () => {
