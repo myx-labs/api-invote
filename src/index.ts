@@ -119,16 +119,14 @@ async function processResults(
   //   data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
   // };
 
-  return replica
-    .filter((item) => !treatAsUndiRosak(item.name))
-    .map((item, index) => ({
-      ...item,
-      name: hidden
-        ? `${index + 1}${getOrdinal(index + 1)}`
-        : treatAsUndiRosak(item.name)
-        ? "ROSAK"
-        : item.name,
-    }));
+  return replica.map((item, index) => ({
+    ...item,
+    name: hidden
+      ? `${index + 1}${getOrdinal(index + 1)}`
+      : treatAsUndiRosak(item.name)
+      ? "ROSAK"
+      : item.name,
+  }));
 }
 
 server.get("/stats/series-identifiers", async () => {
