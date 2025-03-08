@@ -119,7 +119,7 @@ async function processResults(
   //   data: validBallots.concat({ name: "ROSAK", votes: invalidCount }),
   // };
 
-  return replica.map((item, index) => ({
+  const data = replica.map((item, index) => ({
     ...item,
     name: hidden
       ? `${index + 1}${getOrdinal(index + 1)}`
@@ -127,6 +127,11 @@ async function processResults(
       ? "ROSAK"
       : item.name,
   }));
+
+  return {
+    hidden,
+    data,
+  };
 }
 
 server.get("/stats/series-identifiers", async () => {
