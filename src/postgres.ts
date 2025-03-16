@@ -1,9 +1,10 @@
 import pkg from "pg";
 const { Pool, types } = pkg;
 
-const pool = new Pool();
-
 import config from "./config.js";
+
+const pool = new Pool({ connectionString: config.connectionString });
+
 import { broadcastWS } from "./index.js";
 
 export async function startDB() {

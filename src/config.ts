@@ -12,4 +12,5 @@ export default {
   credentials: {
     api: process.env.AUTHENTICATION_KEY as string,
   },
+  connectionString: process.env.DATABASE_URL,
 };
