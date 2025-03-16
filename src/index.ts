@@ -16,7 +16,7 @@ import {
   getAllVotesByParty,
   getAllVotesBySeries,
   getBallotValueCounts,
-  getReplica,
+  getBallotValueCountsBySeries,
   getSeats,
   getSeriesIdentifiers,
   getTimestamps,
@@ -165,7 +165,8 @@ server.get(
   async (req, res) => {
     const seriesIdentifier = req.query.series_identifier;
     const hidden =
-      config.hidden && seriesIdentifier === config.seriesIdentifier;
+      config.hidden &&
+      (seriesIdentifier === config.seriesIdentifier || !seriesIdentifier);
     const timestamps = await getTimestamps(seriesIdentifier);
     const results = [];
     for (const timestamp of timestamps) {
@@ -186,6 +187,20 @@ server.get(
       }
     }
     return results;
+  }
+);
+
+server.get(
+  "/stats/total/:series_identifier",
+  { schema: { params: Type.Object({ series_identifier: Type.String() }) } },
+  async (req, res) => {
+    const seriesIdentifier = req.params.series_identifier;
+    const hidden =
+      config.hidden && seriesIdentifier === config.seriesIdentifier;
+    return processResults(
+      await getBallotValueCountsBySeries(seriesIdentifier),
+      hidden
+    );
   }
 );
 

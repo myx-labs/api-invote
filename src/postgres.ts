@@ -70,6 +70,18 @@ export async function getBallotValueCounts(timestamp_box?: Date) {
   return response.rows;
 }
 
+export async function getBallotValueCountsBySeries(series_identifier?: string) {
+  let query = `SELECT value AS name, COUNT(*) AS votes FROM ${table_ballots} GROUP BY name ORDER BY votes DESC;`;
+  if (series_identifier) {
+    query = `SELECT value AS name, COUNT(*) AS votes FROM ${table_ballots} WHERE series_identifier = $1 GROUP BY name ORDER BY votes DESC;`;
+  }
+  const response = await pool.query<InvoteBallotCountData>(
+    query,
+    series_identifier ? [series_identifier] : []
+  );
+  return response.rows;
+}
+
 export async function getTimestamps(seriesIdentifier?: string) {
   let query = `SELECT DISTINCT timestamp_box FROM ${table_ballots} ORDER BY timestamp_box DESC;`;
   if (seriesIdentifier) {
