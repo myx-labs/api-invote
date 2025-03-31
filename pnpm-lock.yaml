@@ -24,8 +24,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
       got:
-        specifier: ^14.4.6
-        version: 14.4.6
+        specifier: ^14.4.7
+        version: 14.4.7
       pg:
         specifier: ^8.14.1
         version: 8.14.1
@@ -417,8 +417,8 @@ packages:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
 
-  got@14.4.6:
-    resolution: {integrity: sha512-rnhwfM/PhMNJ1i17k3DuDqgj0cKx3IHxBKVv/WX1uDKqrhi2Gv3l7rhPThR/Cc6uU++dD97W9c8Y0qyw9x0jag==}
+  got@14.4.7:
+    resolution: {integrity: sha512-DI8zV1231tqiGzOiOzQWDhsBmncFW7oQDH6Zgy6pDPrqJuVZMtoSgPLLsBZQj8Jg4JFfwoOsDA8NGtLQLnIx2g==}
     engines: {node: '>=20'}
 
   has-flag@3.0.0:
@@ -725,8 +725,8 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  type-fest@4.37.0:
-    resolution: {integrity: sha512-S/5/0kFftkq27FPNye0XM1e2NsnoD/3FS+pBmbjmmtLT6I+i344KoOf7pvXreaFsDamWeaJX55nczA1m5PsBDg==}
+  type-fest@4.38.0:
+    resolution: {integrity: sha512-2dBz5D5ycHIoliLYLi0Q2V7KRaDlH0uWIvmk7TYlAg5slqwiPv1ezJdZm1QEM0xgk29oYWMCbIG7E6gHpvChlg==}
     engines: {node: '>=16'}
 
   typescript@5.8.2:
@@ -1109,7 +1109,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  got@14.4.6:
+  got@14.4.7:
     dependencies:
       '@sindresorhus/is': 7.0.1
       '@szmarczak/http-timer': 5.0.1
@@ -1121,7 +1121,7 @@ snapshots:
       lowercase-keys: 3.0.0
       p-cancelable: 4.0.1
       responselike: 3.0.0
-      type-fest: 4.37.0
+      type-fest: 4.38.0
 
   has-flag@3.0.0: {}
 
@@ -1389,7 +1389,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  type-fest@4.37.0: {}
+  type-fest@4.38.0: {}
 
   typescript@5.8.2: {}
 
