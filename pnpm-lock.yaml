@@ -12,8 +12,8 @@ importers:
         specifier: ^11.0.1
         version: 11.0.1
       '@fastify/type-provider-typebox':
-        specifier: ^5.1.0
-        version: 5.1.0(@sinclair/typebox@0.31.28)
+        specifier: ^5.2.0
+        version: 5.2.0(@sinclair/typebox@0.31.28)
       '@fastify/websocket':
         specifier: ^11.1.0
         version: 11.1.0
@@ -225,8 +225,8 @@ packages:
   '@fastify/proxy-addr@5.0.0':
     resolution: {integrity: sha512-37qVVA1qZ5sgH7KpHkkC4z9SK6StIsIcOmpjvMPXNb3vx2GQxhZocogVYbr2PbbeLCQxYIPDok307xEvRZOzGA==}
 
-  '@fastify/type-provider-typebox@5.1.0':
-    resolution: {integrity: sha512-F1AQHeLiKp1hu6GMWm5W6fZ6zXQ0mTV+qHOzrptAie9AYewvFr5Q3blfy8Qmx9gUgwA3Yj+CWvQQJeTwDgTnIg==}
+  '@fastify/type-provider-typebox@5.2.0':
+    resolution: {integrity: sha512-RoUFTQNYlaVM/gXosFqlrUAD/JHC+OXLcj4DxNoMOag2GI7OydfCt+3vdT+6D2daJwhGAdkpxB0wLNqS7gf4CQ==}
     peerDependencies:
       '@sinclair/typebox': '>=0.26 <=0.34'
 
@@ -848,7 +848,7 @@ snapshots:
       '@fastify/forwarded': 3.0.0
       ipaddr.js: 2.2.0
 
-  '@fastify/type-provider-typebox@5.1.0(@sinclair/typebox@0.31.28)':
+  '@fastify/type-provider-typebox@5.2.0(@sinclair/typebox@0.31.28)':
     dependencies:
       '@sinclair/typebox': 0.31.28
 
