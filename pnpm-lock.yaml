@@ -31,8 +31,8 @@ importers:
         version: 8.16.3
     devDependencies:
       '@types/dotenv-safe':
-        specifier: ^8.1.6
-        version: 8.1.6
+        specifier: ^9.1.0
+        version: 9.1.0(dotenv@8.6.0)
       '@types/node':
         specifier: ^24.5.2
         version: 24.5.2
@@ -253,8 +253,10 @@ packages:
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
     engines: {node: '>=14.16'}
 
-  '@types/dotenv-safe@8.1.6':
-    resolution: {integrity: sha512-ftZXu3WGT6ALq+f98IX2gWriGMPds+0ku5h8kZewNpY47ua+Z+XNcin9apZ2kVd4B9LV1vMfUOyDf1/hhreR0Q==}
+  '@types/dotenv-safe@9.1.0':
+    resolution: {integrity: sha512-cL9PCogrlu+uDtq3M9qvAs+G5rfHwx+untcZGzA3fX8++NVdg9f01zdA175h55TstsEFRogXMUObo6QDduc/5w==}
+    peerDependencies:
+      dotenv: '>=8.2.0'
 
   '@types/http-cache-semantics@4.0.4':
     resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
@@ -877,7 +879,7 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@types/dotenv-safe@8.1.6':
+  '@types/dotenv-safe@9.1.0(dotenv@8.6.0)':
     dependencies:
       '@types/node': 24.5.2
       dotenv: 8.6.0
