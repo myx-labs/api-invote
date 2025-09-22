@@ -12,8 +12,8 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
       '@fastify/type-provider-typebox':
-        specifier: ^5.2.0
-        version: 5.2.0(@sinclair/typebox@0.31.28)
+        specifier: ^6.0.0
+        version: 6.0.0(typebox@1.0.15)
       '@fastify/websocket':
         specifier: ^11.2.0
         version: 11.2.0
@@ -231,19 +231,16 @@ packages:
   '@fastify/proxy-addr@5.0.0':
     resolution: {integrity: sha512-37qVVA1qZ5sgH7KpHkkC4z9SK6StIsIcOmpjvMPXNb3vx2GQxhZocogVYbr2PbbeLCQxYIPDok307xEvRZOzGA==}
 
-  '@fastify/type-provider-typebox@5.2.0':
-    resolution: {integrity: sha512-RoUFTQNYlaVM/gXosFqlrUAD/JHC+OXLcj4DxNoMOag2GI7OydfCt+3vdT+6D2daJwhGAdkpxB0wLNqS7gf4CQ==}
+  '@fastify/type-provider-typebox@6.0.0':
+    resolution: {integrity: sha512-rzRQ/VCIRqaKiT8QMSNVw+zlbmVetRMlZLr9ZoEAKieI3aZUcJAMPCmUmUpU1BCU4nuoweOTZvZIPpnHPsa2xQ==}
     peerDependencies:
-      '@sinclair/typebox': '>=0.26 <=0.34'
+      typebox: ^1.0.13
 
   '@fastify/websocket@11.2.0':
     resolution: {integrity: sha512-3HrDPbAG1CzUCqnslgJxppvzaAZffieOVbLp1DAy1huCSynUWPifSvfdEDUR8HlJLp3sp1A36uOM2tJogADS8w==}
 
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
-
-  '@sinclair/typebox@0.31.28':
-    resolution: {integrity: sha512-/s55Jujywdw/Jpan+vsy6JZs1z2ZTGxTmbZTPiuSL2wz9mfzA2gN1zzaqmvfi4pq+uOt7Du85fkiwv5ymW84aQ==}
 
   '@sindresorhus/is@7.1.0':
     resolution: {integrity: sha512-7F/yz2IphV39hiS2zB4QYVkivrptHHh0K8qJJd9HhuWSdvf8AN7NpebW3CcDZDBQsUPMoDKWsY2WWgW7bqOcfA==}
@@ -715,6 +712,9 @@ packages:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
 
+  typebox@1.0.15:
+    resolution: {integrity: sha512-MOLQPGYtiNQMVklXSg2soH+LLKP83HpoX5MylJpmJMiWKhIeWypufJhhGomxzVIdvUNA3bcRRr/x0eYUzPApMQ==}
+
   typescript@5.9.2:
     resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
     engines: {node: '>=14.17'}
@@ -856,9 +856,9 @@ snapshots:
       '@fastify/forwarded': 3.0.0
       ipaddr.js: 2.2.0
 
-  '@fastify/type-provider-typebox@5.2.0(@sinclair/typebox@0.31.28)':
+  '@fastify/type-provider-typebox@6.0.0(typebox@1.0.15)':
     dependencies:
-      '@sinclair/typebox': 0.31.28
+      typebox: 1.0.15
 
   '@fastify/websocket@11.2.0':
     dependencies:
@@ -870,8 +870,6 @@ snapshots:
       - utf-8-validate
 
   '@sec-ant/readable-stream@0.4.1': {}
-
-  '@sinclair/typebox@0.31.28': {}
 
   '@sindresorhus/is@7.1.0': {}
 
@@ -1358,6 +1356,8 @@ snapshots:
       fsevents: 2.3.3
 
   type-fest@4.41.0: {}
+
+  typebox@1.0.15: {}
 
   typescript@5.9.2: {}
 
