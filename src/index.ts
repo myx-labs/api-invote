@@ -5,7 +5,8 @@ config_env();
 import fastify from "fastify";
 import fastifyCors from "@fastify/cors";
 import fastifyWebsocket from "@fastify/websocket";
-import { Type, TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
+import { Type } from "typebox";
 
 // Classes
 import config from "./config.js";
@@ -218,14 +219,12 @@ server.post(
   "/add-ballot",
   {
     schema: {
-      body: Type.Strict(
-        Type.Object({
-          id: Type.Optional(Type.String()),
-          value: Type.Optional(Type.String()),
-          timestamp_box: Type.Number(),
-          timestamp_ballot: Type.Number(),
-        })
-      ),
+      body: Type.Object({
+        id: Type.Optional(Type.String()),
+        value: Type.Optional(Type.String()),
+        timestamp_box: Type.Number(),
+        timestamp_ballot: Type.Number(),
+      }),
     },
   },
   async (req, res) => {
@@ -263,12 +262,10 @@ server.post(
   "/add-seat",
   {
     schema: {
-      body: Type.Strict(
-        Type.Object({
-          index: Type.Number(),
-          value: Type.Optional(Type.String()),
-        })
-      ),
+      body: Type.Object({
+        index: Type.Number(),
+        value: Type.Optional(Type.String()),
+      }),
     },
   },
   async (req, res) => {
