@@ -13,7 +13,7 @@ importers:
         version: 11.1.0
       '@fastify/type-provider-typebox':
         specifier: ^6.0.0
-        version: 6.0.0(typebox@1.0.35)
+        version: 6.0.0(typebox@1.0.37)
       '@fastify/websocket':
         specifier: ^11.2.0
         version: 11.2.0
@@ -30,15 +30,15 @@ importers:
         specifier: ^8.16.3
         version: 8.16.3
       typebox:
-        specifier: ^1.0.35
-        version: 1.0.35
+        specifier: ^1.0.37
+        version: 1.0.37
     devDependencies:
       '@types/dotenv-safe':
         specifier: ^9.1.0
         version: 9.1.0(dotenv@8.6.0)
       '@types/node':
-        specifier: ^22.18.10
-        version: 22.18.10
+        specifier: ^22.18.11
+        version: 22.18.11
       '@types/pg':
         specifier: ^8.15.5
         version: 8.15.5
@@ -264,8 +264,8 @@ packages:
   '@types/http-cache-semantics@4.0.4':
     resolution: {integrity: sha512-1m0bIFVc7eJWyve9S0RnuRgcQqF/Xd5QsUZAZeQFr1Q3/p9JWoQQEqmVy+DPTNpGXwhgIetAoYF8JSc33q29QA==}
 
-  '@types/node@22.18.10':
-    resolution: {integrity: sha512-anNG/V/Efn/YZY4pRzbACnKxNKoBng2VTFydVu8RRs5hQjikP8CQfaeAV59VFSCzKNp90mXiVXW2QzV56rwMrg==}
+  '@types/node@22.18.11':
+    resolution: {integrity: sha512-Gd33J2XIrXurb+eT2ktze3rJAfAp9ZNjlBdh4SVgyrKEOADwCbdUDaK7QgJno8Ue4kcajscsKqu6n8OBG3hhCQ==}
 
   '@types/pg@8.15.5':
     resolution: {integrity: sha512-LF7lF6zWEKxuT3/OR8wAZGzkg4ENGXFNyiV/JeOt9z5B+0ZVwbql9McqX5c/WStFq1GaGso7H1AzP/qSzmlCKQ==}
@@ -709,8 +709,8 @@ packages:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
 
-  typebox@1.0.35:
-    resolution: {integrity: sha512-K314QG+lnaymQwdJXxSPqv+X0l3zx4ltpVAXAWszwGjUT4nh1jTNdzM8bTwSh+TO7fXfv9VANnHxDzaLcCfIlw==}
+  typebox@1.0.37:
+    resolution: {integrity: sha512-xdaEemcO+OzUQZm4DVC1+nViXEiFJqEVANfnER31xajkd15b5M9lmpt/A3otLtWx8OHfM7LYX3q2jQS9IIwFYQ==}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -853,9 +853,9 @@ snapshots:
       '@fastify/forwarded': 3.0.1
       ipaddr.js: 2.2.0
 
-  '@fastify/type-provider-typebox@6.0.0(typebox@1.0.35)':
+  '@fastify/type-provider-typebox@6.0.0(typebox@1.0.37)':
     dependencies:
-      typebox: 1.0.35
+      typebox: 1.0.37
 
   '@fastify/websocket@11.2.0':
     dependencies:
@@ -878,24 +878,24 @@ snapshots:
 
   '@types/dotenv-safe@9.1.0(dotenv@8.6.0)':
     dependencies:
-      '@types/node': 22.18.10
+      '@types/node': 22.18.11
       dotenv: 8.6.0
 
   '@types/http-cache-semantics@4.0.4': {}
 
-  '@types/node@22.18.10':
+  '@types/node@22.18.11':
     dependencies:
       undici-types: 6.21.0
 
   '@types/pg@8.15.5':
     dependencies:
-      '@types/node': 22.18.10
+      '@types/node': 22.18.11
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.18.10
+      '@types/node': 22.18.11
 
   abstract-logging@2.0.1: {}
 
@@ -1355,7 +1355,7 @@ snapshots:
 
   type-fest@4.41.0: {}
 
-  typebox@1.0.35: {}
+  typebox@1.0.37: {}
 
   typescript@5.9.3: {}
 
