@@ -23,7 +23,7 @@ export async function startDB() {
     console.log("Testing database connection...");
     // TODO: this is likely UNSAFE, try to change in the future: https://stackoverflow.com/a/39176670/3954754
     types.setTypeParser(20, parseInt);
-    
+
     // Just test the connection without keeping it open
     const client = await pool.connect();
     console.log("Database connection test successful");
@@ -229,4 +229,3 @@ export async function closeDB() {
   await pool.end();
   console.log("Database pool closed");
 }
-
