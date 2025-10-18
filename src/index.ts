@@ -23,6 +23,7 @@ import {
   getTimestamps,
   InvoteBallotCountData,
   startDB,
+  closeDB,
 } from "./postgres.js";
 
 // Variables
@@ -297,3 +298,14 @@ async function bootstrap() {
 }
 
 await bootstrap();
+
+// Graceful shutdown handlers
+const shutdown = async (signal: string) => {
+  console.log(`\n${signal} received, closing server gracefully...`);
+  await server.close();
+  await closeDB();
+  process.exit(0);
+};
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));

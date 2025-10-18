@@ -3,17 +3,32 @@ const { Pool, types } = pkg;
 
 import config from "./config.js";
 
-const pool = new Pool({ connectionString: config.connectionString });
+// Pool configuration that allows scaling to zero
+const pool = new Pool({
+  connectionString: config.connectionString,
+  // Close idle connections after 10 seconds
+  idleTimeoutMillis: 10000,
+  // Maximum time to wait for a connection before timing out
+  connectionTimeoutMillis: 5000,
+  // Keep a minimum of 0 connections (allows scaling to zero)
+  min: 0,
+  // Maximum connections in the pool
+  max: 10,
+});
 
 import { broadcastWS } from "./index.js";
 
 export async function startDB() {
   try {
-    console.log("Attempting to connect...");
+    console.log("Testing database connection...");
     // TODO: this is likely UNSAFE, try to change in the future: https://stackoverflow.com/a/39176670/3954754
     types.setTypeParser(20, parseInt);
-    await pool.connect();
-    console.log("Connected");
+    
+    // Just test the connection without keeping it open
+    const client = await pool.connect();
+    console.log("Database connection test successful");
+    // Release the client back to the pool immediately
+    client.release();
   } catch (error) {
     console.error(error);
     throw new Error("Unable to connect to Postgres database!");
@@ -208,3 +223,10 @@ export async function addReplica(
     ]
   );
 }
+
+// Graceful shutdown function to close the pool
+export async function closeDB() {
+  await pool.end();
+  console.log("Database pool closed");
+}
+
