@@ -24,8 +24,8 @@ importers:
         specifier: ^5.8.4
         version: 5.8.4
       got:
-        specifier: ^15.0.0
-        version: 15.0.0
+        specifier: ^15.0.1
+        version: 15.0.1
       pg:
         specifier: ^8.20.0
         version: 8.20.0
@@ -422,8 +422,8 @@ packages:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
 
-  got@15.0.0:
-    resolution: {integrity: sha512-CUqLG9oFZRis7SZq5Bcxh42LpzxXgXwxWVwNljo60oki8Cq3GXVRpDY2K4GwTzYz3htyXf212nfNg2socz4esQ==}
+  got@15.0.1:
+    resolution: {integrity: sha512-InYCBboAj9YmFiMcxbIRQ/WPoLsKSc9t9EGaUjGENtxunnx8USWtRY/SO/V3VsHLfDvUxAO2Qmx+6fQyG1jjaw==}
     engines: {node: '>=22'}
 
   has-flag@3.0.0:
@@ -1091,7 +1091,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  got@15.0.0:
+  got@15.0.1:
     dependencies:
       '@sindresorhus/is': 7.2.0
       byte-counter: 0.1.0
