@@ -13,7 +13,7 @@ importers:
         version: 11.3.0
       '@fastify/type-provider-typebox':
         specifier: ^6.1.0
-        version: 6.1.0(typebox@1.3.2)
+        version: 6.1.0(typebox@1.3.8)
       '@fastify/websocket':
         specifier: ^11.3.0
         version: 11.3.0
@@ -30,8 +30,8 @@ importers:
         specifier: ^8.22.0
         version: 8.22.0
       typebox:
-        specifier: ^1.3.2
-        version: 1.3.2
+        specifier: ^1.3.8
+        version: 1.3.8
     devDependencies:
       '@types/dotenv-safe':
         specifier: ^9.1.0
@@ -835,8 +835,8 @@ packages:
     resolution: {integrity: sha512-YGYEVz3Fm5iy/AybuA0oyNFq7H4CgQNfRp/qfe8nurE1kuCeNm3/vfm9X4Mtl+qLyaKJUh5xrFZwogr41SMjYA==}
     engines: {node: '>=20'}
 
-  typebox@1.3.2:
-    resolution: {integrity: sha512-/JwVcKLrZkcmqtiX7hhvhxyJxEOSs22bzuTBMdzcdEfl9qNbQ0ZL7sg/z3QLEf7vLxo0TTLyH49Ca7TjagmRvw==}
+  typebox@1.3.8:
+    resolution: {integrity: sha512-xYaJgF0KMvBViKWRaKTAtfR6sDt/yH6xAjGAHXYJxKxUF4pVyPXZZhIlwOg6cDIE81N7L0pyIHs136RHBm6rLQ==}
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -983,9 +983,9 @@ snapshots:
       '@fastify/forwarded': 3.0.1
       ipaddr.js: 2.4.0
 
-  '@fastify/type-provider-typebox@6.1.0(typebox@1.3.2)':
+  '@fastify/type-provider-typebox@6.1.0(typebox@1.3.8)':
     dependencies:
-      typebox: 1.3.2
+      typebox: 1.3.8
 
   '@fastify/websocket@11.3.0':
     dependencies:
@@ -1539,7 +1539,7 @@ snapshots:
     dependencies:
       tagged-tag: 1.0.0
 
-  typebox@1.3.2: {}
+  typebox@1.3.8: {}
 
   typescript@7.0.2:
     optionalDependencies:
